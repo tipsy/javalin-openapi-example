@@ -5,6 +5,7 @@ import io.javalin.http.Context;
 import io.javalin.http.NotFoundResponse;
 import io.javalin.plugin.openapi.annotations.*;
 
+// This is a controller, it should contain logic related to client/server IO
 public class UserController {
 
     @OpenApi(
