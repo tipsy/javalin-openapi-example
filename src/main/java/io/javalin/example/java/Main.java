@@ -33,7 +33,7 @@ public class Main {
     }
 
     private static OpenApiPlugin getConfiguredOpenApiPlugin() {
-        Info info = new Info().version("1.0").description("User API");
+        Info info = new Info().version("1.0").title("User API").description("Demo API with 5 operations");
         OpenApiOptions options = new OpenApiOptions(info)
                 .activateAnnotationScanningFor("io.javalin.example.java")
                 .path("/swagger-docs") // endpoint for OpenAPI json

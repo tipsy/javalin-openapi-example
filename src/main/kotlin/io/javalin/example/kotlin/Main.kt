@@ -34,8 +34,9 @@ fun main() {
 fun getConfiguredOpenApiPlugin() = OpenApiPlugin(
     OpenApiOptions(
         Info().apply {
+            title("User API")
             version("1.0")
-            description("User API")
+            description("Demo API with 5 operations")
         }
     ).apply {
         path("/swagger-docs") // endpoint for OpenAPI json
