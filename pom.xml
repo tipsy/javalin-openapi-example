@@ -54,6 +54,13 @@
             <artifactId>redoc</artifactId>
             <version>2.0.0-rc.2</version>
         </dependency>
+        <!-- openapi3-dsl provides a nice DSL for configuring the base openapi spec -->
+        <dependency>
+            <groupId>cc.vileda</groupId>
+            <artifactId>kotlin-openapi3-dsl</artifactId>
+            <version>0.20.2</version>
+            <optional>true</optional>
+        </dependency>
         <!-- classgraph is only required if using static handlers in Java (io.javalin.example.java.UserController) -->
         <dependency>
             <groupId>io.github.classgraph</groupId>

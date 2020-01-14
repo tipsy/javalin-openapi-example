@@ -1,5 +1,7 @@
 package io.javalin.example.kotlin
 
+import cc.vileda.openapi.dsl.info
+import cc.vileda.openapi.dsl.openapiDsl
 import io.javalin.Javalin
 import io.javalin.apibuilder.ApiBuilder.*
 import io.javalin.example.kotlin.user.UserController
@@ -7,7 +9,6 @@ import io.javalin.plugin.openapi.OpenApiOptions
 import io.javalin.plugin.openapi.OpenApiPlugin
 import io.javalin.plugin.openapi.ui.ReDocOptions
 import io.javalin.plugin.openapi.ui.SwaggerOptions
-import io.swagger.v3.oas.models.info.Info
 
 fun main() {
 
@@ -32,13 +33,15 @@ fun main() {
 }
 
 fun getConfiguredOpenApiPlugin() = OpenApiPlugin(
-    OpenApiOptions(
-        Info().apply {
-            title("User API")
-            version("1.0")
-            description("Demo API with 5 operations")
+    OpenApiOptions {
+        openapiDsl {
+            info {
+                title = "User API"
+                description = "Demo API with 5 operations"
+                version = "1.0.0"
+            }
         }
-    ).apply {
+    }.apply {
         path("/swagger-docs") // endpoint for OpenAPI json
         swagger(SwaggerOptions("/swagger-ui")) // endpoint for swagger-ui
         reDoc(ReDocOptions("/redoc")) // endpoint for redoc
