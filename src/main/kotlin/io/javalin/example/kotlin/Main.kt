@@ -19,7 +19,7 @@ fun main() {
         path("users") {
             get(UserController::getAll)
             post(UserController::create)
-            path(":userId") {
+            path("{userId}") {
                 get(UserController::getOne)
                 patch(UserController::update)
                 delete(UserController::delete)

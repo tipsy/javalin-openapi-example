@@ -112,7 +112,7 @@ public class UserController {
 
     // Prevent duplicate validation of userId
     private static int validPathParamUserId(Context ctx) {
-        return ctx.pathParam("userId", Integer.class).check(id -> id > 0).get();
+        return ctx.pathParamAsClass("userId", Integer.class).check(id -> id > 0, "ID must be greater than 0").get();
     }
 
 }

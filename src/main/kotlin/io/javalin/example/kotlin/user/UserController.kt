@@ -19,7 +19,7 @@ object UserController {
         ]
     )
     fun create(ctx: Context) {
-        val user = ctx.body<NewUserRequest>()
+        val user = ctx.bodyAsClass<NewUserRequest>()
         UserService.save(name = user.name, email = user.email)
         ctx.status(201)
     }
@@ -63,7 +63,7 @@ object UserController {
     )
     fun update(ctx: Context) {
         val user = UserService.findById(ctx.validPathParamUserId()) ?: throw NotFoundResponse("User not found")
-        val newUser = ctx.body<NewUserRequest>()
+        val newUser = ctx.bodyAsClass<NewUserRequest>()
         UserService.update(id = user.id, name = newUser.name, email = newUser.email)
         ctx.status(204)
     }
@@ -88,4 +88,5 @@ object UserController {
 }
 
 // Prevent duplicate validation of userId
-private fun Context.validPathParamUserId() = this.pathParam<Int>("userId").check({ it >= 0 }).get()
+private fun Context.validPathParamUserId() = this.pathParamAsClass<Int>("userId")
+    .check({ it >= 0 }, "ID must be greater than 0").get()
